@@ -1,0 +1,13 @@
+# Build directories
+/build/
+*/build/
+
+# CMake temporary files
+CMakeCache.txt
+CMakeFiles/
+*.cmake
+
+# Executables (if built outside 'build/')
+/client/client
+/server/server
+*.exe
