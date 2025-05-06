@@ -1,3 +1,7 @@
+# C++ standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 # Server executable
 add_executable(client
     src/client.cpp

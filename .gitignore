@@ -11,3 +11,7 @@ CMakeFiles/
 /client/client
 /server/server
 *.exe
+
+# VSCode generated files
+/.vscode
+*/vscode/

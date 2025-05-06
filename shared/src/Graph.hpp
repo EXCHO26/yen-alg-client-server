@@ -30,8 +30,6 @@ class Graph
 
     private:
         void reconstructPath(unsigned end, Path& paths, Path& smallest) const;
-        void removeNode(unsigned node);
-        //unsigned getValuePath(Path& path) const;
 
         std::vector<std::vector<std::pair<unsigned, unsigned>>> adjList;
 };

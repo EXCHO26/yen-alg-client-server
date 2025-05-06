@@ -1,7 +1,13 @@
+# C++ standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 # Shared library (Graph.cpp/hpp)
 add_library(shared_lib
     src/Graph.cpp
     src/Graph.hpp
+    src/ThreadPool.cpp
+    src/ThreadPool.hpp
 )
 
 # Make headers available to parent directory

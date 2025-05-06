@@ -1,4 +1,5 @@
 #include "Graph.hpp"
+#include "ThreadPool.hpp"
 
 Graph::Graph(const char* filename)
 {
@@ -104,6 +105,8 @@ void Graph::dijkstra(unsigned start, unsigned end, Path& smallest) const
 std::vector<Path> Graph::yenKSP(unsigned start, unsigned end, unsigned Kst)
 {
     if (Kst < 1) throw std::invalid_argument("Kth must be >= 1");
+    if (start >= this->adjList.size() || end >= this->adjList.size()) throw std::out_of_range("Given param is out of range!");
+    
     std::vector<Path> A;
     Path smallestPath;
 
@@ -117,6 +120,7 @@ std::vector<Path> Graph::yenKSP(unsigned start, unsigned end, unsigned Kst)
     for (int k = 1; k < Kst; k++)
     {
         Path& previousPath = A[k-1];
+        if (previousPath.empty()) break;
 
         // The spur node ranges from the first node to the next to last node in the previous k-shortest path.
         for (int i = 0; i < A[k - 1].size() - 1; i++)
@@ -131,7 +135,7 @@ std::vector<Path> Graph::yenKSP(unsigned start, unsigned end, unsigned Kst)
 
             for (const auto& path : A)
             {
-                if (path.size() > i && std::equal(rootPath.begin(), rootPath.end() - 1, path.begin()))
+                if (path.size() > i + 1 && std::equal(rootPath.begin(), rootPath.end() - 1, path.begin()))
                 {
                     // Remove the links that are part of the previous shortest paths which share the same root path.
                     this->removeEdge(path[i], path[i + 1], removedEdges);
