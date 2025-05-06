@@ -21,7 +21,7 @@ class Graph
         void removeEdge(unsigned start, unsigned end, std::vector<Edge>& safe);
 
         void dijkstra(unsigned start, unsigned end, Path& smallest) const;
-        Path yenKSP(unsigned start, unsigned end, unsigned Kst);
+        std::vector<Path> yenKSP(unsigned start, unsigned end, unsigned Kst);
 
         void print() const;
 
