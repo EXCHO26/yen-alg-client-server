@@ -101,9 +101,9 @@ void Graph::dijkstra(unsigned start, unsigned end, Path& smallest) const
     std::reverse(smallest.begin(), smallest.end());
 }
 
-std::vector<Path> Graph::yenKSP(unsigned start, unsigned end, unsigned Kst)
+Path Graph::yenKSP(unsigned start, unsigned end, unsigned Kst)
 {
-
+    if (Kst < 1) throw std::invalid_argument("Kth must be >= 1");
     std::vector<Path> A;
     Path smallestPath;
 
@@ -212,7 +212,7 @@ std::vector<Path> Graph::yenKSP(unsigned start, unsigned end, unsigned Kst)
         B.erase(B.begin());
     }
 
-    return A;
+    return A[Kst - 1];
 }
 
 void Graph::print() const
@@ -236,6 +236,7 @@ unsigned Graph::getValueOfEdge(unsigned start, unsigned end) const
     {
         if (this->adjList[start][i].first == end) return this->adjList[start][i].second;
     }
+    return -1;
 }
 
 unsigned Graph::getValuePath(const Path& path) const
